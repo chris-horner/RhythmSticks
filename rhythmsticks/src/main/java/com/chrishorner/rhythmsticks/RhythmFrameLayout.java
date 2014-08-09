@@ -35,7 +35,6 @@ public class RhythmFrameLayout extends FrameLayout {
     private float[] horizontalPoints;
     private float[] verticalPoints;
     private int spacing;
-    private boolean drawUnderContent;
     private int maskLeft;
     private int maskTop;
     private int maskRight;
@@ -62,11 +61,6 @@ public class RhythmFrameLayout extends FrameLayout {
         linePaint.setColor(DEFAULT_COLOR);
         maskPaint.setAntiAlias(true);
         maskPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-    }
-
-    public void setDrawUnderContent(boolean drawUnderContent) {
-        this.drawUnderContent = drawUnderContent;
-        invalidate();
     }
 
     public void setMode(int mode) {
@@ -116,9 +110,7 @@ public class RhythmFrameLayout extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (!drawUnderContent) {
-            super.dispatchDraw(canvas);
-        }
+        super.dispatchDraw(canvas);
 
         if (!initialized) {
             initialize();
@@ -138,10 +130,6 @@ public class RhythmFrameLayout extends FrameLayout {
 
         if (enabled) {
             canvas.drawBitmap(gridBitmap, 0, 0, null);
-        }
-
-        if (drawUnderContent) {
-            super.dispatchDraw(canvas);
         }
     }
 

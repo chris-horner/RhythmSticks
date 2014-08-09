@@ -24,7 +24,6 @@ public class DebugPanel extends RhythmFrameLayout {
         setupModesSpinner();
         setupIntervalSpinner();
         setupColorSpinner();
-        setupUnderContentSwitch();
         setupShowVerticalSwitch();
         setupShowHorizontalSwitch();
         setupEnabledSwitch();
@@ -75,16 +74,6 @@ public class DebugPanel extends RhythmFrameLayout {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
-
-    private void setupUnderContentSwitch() {
-        Switch underContentSwitch = (Switch) findViewById(R.id.debug_draw_under_content);
-        underContentSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setDrawUnderContent(isChecked);
             }
         });
     }

@@ -53,16 +53,6 @@
                 <TextView
                     style="@style/DebugTitle"
                     android:layout_gravity="start|end|center_vertical"
-                    android:text="Under content" />
-
-                <Switch
-                    android:id="@+id/debug_draw_under_content"
-                    style="@style/DebugWidget"
-                    android:layout_gravity="start|center_vertical" />
-
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
                     android:text="Show vertical" />
 
                 <Switch
