@@ -31,7 +31,7 @@ public class RhythmFrameLayout extends FrameLayout {
     private final Paint linePaint = new Paint();
     private final Paint maskPaint = new Paint();
 
-    private int mode = MODE_TOP_BOTTOM;
+    private int mode = MODE_LEFT_RIGHT;
     private float[] horizontalPoints;
     private float[] verticalPoints;
     private int spacing;
