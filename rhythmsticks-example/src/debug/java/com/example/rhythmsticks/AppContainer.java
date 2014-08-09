@@ -3,8 +3,6 @@ package com.example.rhythmsticks;
 import android.app.Activity;
 import android.view.ViewGroup;
 
-import com.chrishorner.rhythmsticks.RhythmFrameLayout;
-
 /**
  * @author Christopher Horner
  */
@@ -14,8 +12,7 @@ public class AppContainer {
     }
 
     public static ViewGroup get(Activity activity) {
-        RhythmFrameLayout rhythmLayout = new RhythmFrameLayout(activity);
-        activity.setContentView(rhythmLayout);
-        return rhythmLayout;
+        activity.setContentView(R.layout.debug_container);
+        return (ViewGroup) activity.findViewById(R.id.debug_content);
     }
 }
