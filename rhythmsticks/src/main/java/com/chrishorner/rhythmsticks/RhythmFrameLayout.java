@@ -31,7 +31,7 @@ public class RhythmFrameLayout extends FrameLayout {
     private final Paint linePaint = new Paint();
     private final Paint maskPaint = new Paint();
 
-    private int mode = MODE_LEFT_RIGHT;
+    private int mode = MODE_TOP_BOTTOM;
     private float[] horizontalPoints;
     private float[] verticalPoints;
     private int spacing;
@@ -242,7 +242,42 @@ public class RhythmFrameLayout extends FrameLayout {
     }
 
     private void calculateTopBottomPoints() {
+        int width = getWidth();
+        int height = getHeight();
 
+        int verticalLineCount = width / spacing;
+        int verticalPointCount = verticalLineCount * 4; //(x0, y0, x1, y1)
+        verticalPoints = new float[verticalPointCount];
+
+        for (int i = 0; i < verticalLineCount; i++) {
+            int x = spacing + (i * spacing);
+            int index = i * 4;
+            verticalPoints[index] = x;
+            verticalPoints[index + 1] = 0;
+            verticalPoints[index + 2] = x;
+            verticalPoints[index + 3] = height;
+        }
+
+        int horizontalLineCount = height / spacing;
+        int halfHorizontalLineCount = horizontalLineCount / 2;
+        int horizontalPointCount = horizontalLineCount * 4;
+        horizontalPoints = new float[horizontalPointCount];
+
+        for (int i = 0; i < halfHorizontalLineCount; i++) {
+            int y = spacing + (i * spacing);
+            int index = i * 4;
+            horizontalPoints[index] = 0;
+            horizontalPoints[index + 1] = y;
+            horizontalPoints[index + 2] = width;
+            horizontalPoints[index + 3] = y;
+
+            y = height - spacing - (i * spacing);
+            index = (horizontalLineCount - 1 - i) * 4;
+            horizontalPoints[index] = 0;
+            horizontalPoints[index + 1] = y;
+            horizontalPoints[index + 2] = width;
+            horizontalPoints[index + 3] = y;
+        }
     }
 
     private void setupVerticalMask() {
@@ -257,7 +292,14 @@ public class RhythmFrameLayout extends FrameLayout {
     }
 
     private void setupHorizontalMask() {
+        int maskSize = dpToPx(MASK_SIZE_DP);
+        maskLeft = 0;
+        maskTop = (getHeight() / 2) - (maskSize / 2);
+        maskRight = getWidth();
+        maskBottom = maskTop + maskSize;
 
+        LinearGradient maskShader = new LinearGradient(0, maskTop, 1, maskBottom, MASK_COLORS, MASK_COLOR_POS, Shader.TileMode.CLAMP);
+        maskPaint.setShader(maskShader);
     }
 
     private boolean shouldDrawMask() {
