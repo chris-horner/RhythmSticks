@@ -172,7 +172,34 @@ public class RhythmFrameLayout extends FrameLayout {
     }
 
     private void calculateBottomRightPoints() {
+        int width = getWidth();
+        int height = getHeight();
 
+        int verticalLineCount = width / spacing;
+        int verticalPointCount = verticalLineCount * 4; //(x0, y0, x1, y1)
+        verticalPoints = new float[verticalPointCount];
+
+        for (int i = 0; i < verticalLineCount; i++) {
+            int x = width - spacing - (i * spacing);
+            int index = i * 4;
+            verticalPoints[index] = x;
+            verticalPoints[index + 1] = 0;
+            verticalPoints[index + 2] = x;
+            verticalPoints[index + 3] = height;
+        }
+
+        int horizontalLineCount = height / spacing;
+        int horizontalPointCount = horizontalLineCount * 4;
+        horizontalPoints = new float[horizontalPointCount];
+
+        for (int i = 0; i < horizontalLineCount; i++) {
+            int y = height - spacing - (i * spacing);
+            int index = i * 4;
+            horizontalPoints[index] = 0;
+            horizontalPoints[index + 1] = y;
+            horizontalPoints[index + 2] = width;
+            horizontalPoints[index + 3] = y;
+        }
     }
 
     private void calculateLeftRightPoints() {
