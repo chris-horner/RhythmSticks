@@ -22,7 +22,7 @@ public class RhythmFrameLayout extends FrameLayout {
     public static final int MODE_LEFT_RIGHT = 3;
     public static final int MODE_TOP_BOTTOM = 4;
 
-    private static final int DEFAULT_COLOR = 0xFF0000FF;
+    private static final int DEFAULT_COLOR = 0xFFFF4444;
     private static final int DEFAULT_SPACING_DP = 16;
     private static final int MASK_SIZE_DP = 256;
     private static final int[] MASK_COLORS = new int[]{0xFFFFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0xFFFFFFFF};
@@ -42,6 +42,7 @@ public class RhythmFrameLayout extends FrameLayout {
     private int maskBottom;
     private boolean drawHorizontalLines = true;
     private boolean drawVerticalLines = true;
+    private boolean enabled = true;
     private boolean initialized;
     private Bitmap gridBitmap;
     private Canvas gridCanvas;
@@ -77,6 +78,36 @@ public class RhythmFrameLayout extends FrameLayout {
         invalidate();
     }
 
+    public void setInterval(int interval) {
+        spacing = interval;
+        invalidate();
+    }
+
+    public void setIntervalDp(int intervalDp) {
+        setInterval(dpToPx(intervalDp));
+    }
+
+    public void setColor(int color) {
+        linePaint.setColor(color);
+        invalidate();
+    }
+
+    public void setDrawHorizontalLines(boolean drawHorizontalLines) {
+        this.drawHorizontalLines = drawHorizontalLines;
+        invalidate();
+    }
+
+    public void setDrawVerticalLines(boolean drawVerticalLines) {
+        this.drawVerticalLines = drawVerticalLines;
+        invalidate();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        invalidate();
+    }
+
     @Override
     public void invalidate() {
         super.invalidate();
@@ -93,19 +124,21 @@ public class RhythmFrameLayout extends FrameLayout {
             initialize();
         }
 
-        if (drawHorizontalLines) {
+        if (enabled && drawHorizontalLines) {
             gridCanvas.drawLines(horizontalPoints, 0, horizontalPoints.length, linePaint);
         }
 
-        if (drawVerticalLines) {
+        if (enabled && drawVerticalLines) {
             gridCanvas.drawLines(verticalPoints, 0, verticalPoints.length, linePaint);
         }
 
-        if (shouldDrawMask()) {
+        if (enabled && shouldDrawMask()) {
             gridCanvas.drawRect(maskLeft, maskTop, maskRight, maskBottom, maskPaint);
         }
 
-        canvas.drawBitmap(gridBitmap, 0, 0, null);
+        if (enabled) {
+            canvas.drawBitmap(gridBitmap, 0, 0, null);
+        }
 
         if (drawUnderContent) {
             super.dispatchDraw(canvas);
