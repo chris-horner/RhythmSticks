@@ -179,13 +179,21 @@ public class RhythmFrameLayout extends FrameLayout {
         int width = getWidth();
         int height = getHeight();
 
-        int verticalLineCount = width / spacing;
+        int verticalLineCount = width / spacing - 1;
+        int halfVerticalLineCount = verticalLineCount / 2;
         int verticalPointCount = verticalLineCount * 4; //(x0, y0, x1, y1)
         verticalPoints = new float[verticalPointCount];
 
-        for (int i = 0; i < verticalLineCount; i++) {
+        for (int i = 0; i < halfVerticalLineCount; i++) {
             int x = spacing + (i * spacing);
             int index = i * 4;
+            verticalPoints[index] = x;
+            verticalPoints[index + 1] = 0;
+            verticalPoints[index + 2] = x;
+            verticalPoints[index + 3] = height;
+
+            x = width - spacing - (i * spacing);
+            index = (verticalLineCount - 1 - i) * 4;
             verticalPoints[index] = x;
             verticalPoints[index + 1] = 0;
             verticalPoints[index + 2] = x;
