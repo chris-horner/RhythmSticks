@@ -6,6 +6,8 @@ android {
 
     defaultConfig {
         versionName VERSION_NAME
+        minSdkVersion 8
+        targetSdkVersion 20
     }
 
     compileOptions {

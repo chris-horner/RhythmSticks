@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <style name="Theme.RhythmSticks" parent="android:Theme.Light.NoTitleBar">
+    <style name="Theme.RhythmSticks" parent="android:Theme.Holo.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/bg</item>
     </style>
 </resources>
