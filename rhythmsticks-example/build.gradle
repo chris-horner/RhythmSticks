@@ -9,7 +9,7 @@ android {
     buildToolsVersion '20.0.0'
 
     defaultConfig {
-        applicationId "com.chrishorner.rhythmsticks"
+        applicationId "com.example.rhythmsticks"
         minSdkVersion 8
         targetSdkVersion 20
         versionCode 1
