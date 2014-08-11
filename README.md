@@ -1,7 +1,7 @@
 RhythmSticks
 ============
 
-A debug Android View that overlays a grid to verify that UI elements adhere to a visual rhythm.
+A debug Android View that overlays a grid to verify UI elements adhere to a visual rhythm.
 
 ![](images/example.png)
 

@@ -16,6 +16,9 @@ import android.widget.FrameLayout;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
+/**
+ * A debug Android View that overlays a grid to verify UI elements adhere to a visual rhythm.
+ */
 public class RhythmFrameLayout extends FrameLayout {
     public static final int MODE_TOP_LEFT = 1;
     public static final int MODE_BOTTOM_RIGHT = 2;
@@ -112,25 +115,26 @@ public class RhythmFrameLayout extends FrameLayout {
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
 
+        if (!enabled)
+            return;
+
         if (!initialized) {
             initialize();
         }
 
-        if (enabled && drawHorizontalLines) {
+        if (drawHorizontalLines) {
             gridCanvas.drawLines(horizontalPoints, 0, horizontalPoints.length, linePaint);
         }
 
-        if (enabled && drawVerticalLines) {
+        if (drawVerticalLines) {
             gridCanvas.drawLines(verticalPoints, 0, verticalPoints.length, linePaint);
         }
 
-        if (enabled && shouldDrawMask()) {
+        if (shouldDrawMask()) {
             gridCanvas.drawRect(maskLeft, maskTop, maskRight, maskBottom, maskPaint);
         }
 
-        if (enabled) {
-            canvas.drawBitmap(gridBitmap, 0, 0, null);
-        }
+        canvas.drawBitmap(gridBitmap, 0, 0, null);
     }
 
     private void initialize() {
