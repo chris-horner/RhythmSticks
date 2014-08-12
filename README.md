@@ -21,6 +21,14 @@ Place a `RhythmFrameLayout` anywhere in your View hierarchy to display a grid ov
   
 It's often useful to change these modes at run time, as most Android screens don't divide neatly by 16dp.
 
+Download
+--------
+
+Download [the latest JAR][3] or grab via Gradle:
+```groovy
+compile 'com.chrishorner:rhythmsticks:1.0.0'
+```
+
 License
 --------
 
@@ -40,3 +48,4 @@ License
     
  [1]: https://github.com/JakeWharton/scalpel
  [2]: https://github.com/JakeWharton/u2020
+ [3]: http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.chrishorner&a=rhythmsticks&v=LATEST
