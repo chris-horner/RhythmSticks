@@ -28,8 +28,8 @@ public class RhythmFrameLayout extends FrameLayout {
     private static final int DEFAULT_COLOR = 0xFFFF4444;
     private static final int DEFAULT_SPACING_DP = 16;
     private static final int MASK_SIZE_DP = 256;
-    private static final int[] MASK_COLORS = new int[]{0xFFFFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0xFFFFFFFF};
-    private static final float[] MASK_COLOR_POS = new float[]{0f, 0.4f, 0.6f, 1f};
+    private static final int[] MASK_COLORS = new int[] {0xFFFFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0xFFFFFFFF};
+    private static final float[] MASK_COLOR_POS = new float[] {0f, 0.4f, 0.6f, 1f};
 
     private final Paint linePaint = new Paint();
     private final Paint maskPaint = new Paint();
@@ -115,8 +115,9 @@ public class RhythmFrameLayout extends FrameLayout {
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
 
-        if (!enabled)
+        if (!enabled) {
             return;
+        }
 
         if (!initialized) {
             initialize();
