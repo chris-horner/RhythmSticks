@@ -2,97 +2,114 @@
 
 <com.example.rhythmsticks.DebugPanel xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <LinearLayout
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="208dp"
+        >
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="208dp">
+      <GridLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#DDD"
+          android:columnCount="2"
+          android:padding="16dp"
+          >
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#DDD"
-                android:columnCount="2"
-                android:padding="16dp">
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Mode"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Mode" />
+        <Spinner
+            android:id="@+id/debug_mode"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|end|center_vertical"
+            />
 
-                <Spinner
-                    android:id="@+id/debug_mode"
-                    style="@style/DebugWidget"
-                    android:layout_gravity="start|end|center_vertical" />
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Interval"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Interval" />
+        <Spinner
+            android:id="@+id/debug_interval"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|end|center_vertical"
+            />
 
-                <Spinner
-                    android:id="@+id/debug_interval"
-                    style="@style/DebugWidget"
-                    android:layout_gravity="start|end|center_vertical" />
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Color"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Color" />
+        <Spinner
+            android:id="@+id/debug_color"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|end|center_vertical"
+            />
 
-                <Spinner
-                    android:id="@+id/debug_color"
-                    style="@style/DebugWidget"
-                    android:layout_gravity="start|end|center_vertical" />
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Show vertical"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Show vertical" />
+        <Switch
+            android:id="@+id/debug_show_vertical"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|center_vertical"
+            android:checked="true"
+            />
 
-                <Switch
-                    android:id="@+id/debug_show_vertical"
-                    style="@style/DebugWidget"
-                    android:checked="true"
-                    android:layout_gravity="start|center_vertical" />
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Show horizontal"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Show horizontal" />
+        <Switch
+            android:id="@+id/debug_show_horizontal"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|center_vertical"
+            android:checked="true"
+            />
 
-                <Switch
-                    android:id="@+id/debug_show_horizontal"
-                    style="@style/DebugWidget"
-                    android:checked="true"
-                    android:layout_gravity="start|center_vertical" />
+        <TextView
+            style="@style/DebugTitle"
+            android:layout_gravity="start|end|center_vertical"
+            android:text="Enabled"
+            />
 
-                <TextView
-                    style="@style/DebugTitle"
-                    android:layout_gravity="start|end|center_vertical"
-                    android:text="Enabled" />
+        <Switch
+            android:id="@+id/debug_enabled"
+            style="@style/DebugWidget"
+            android:layout_gravity="start|center_vertical"
+            android:checked="true"
+            />
 
-                <Switch
-                    android:id="@+id/debug_enabled"
-                    style="@style/DebugWidget"
-                    android:checked="true"
-                    android:layout_gravity="start|center_vertical" />
+      </GridLayout>
 
-            </GridLayout>
+    </ScrollView>
 
-        </ScrollView>
+    <FrameLayout
+        android:id="@+id/debug_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 
-        <FrameLayout
-            android:id="@+id/debug_content"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+  </LinearLayout>
 
 </com.example.rhythmsticks.DebugPanel>
